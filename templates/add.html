@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Expenses</title>
+        <link rel="stylesheet" href="../static/style.css" type="text/css">
+    </head>
+    <body>
+        <div>
+            <form method="POST" class="signup-form">
+                
+                <h1>Add Expenses</h1>
+
+                <div class="form-input-material">
+                     <!-- <label for="email">Email</label> -->
+                    <input type="text" name="amount" class="form-control-material" placeholder="Amount">
+                </div>
+
+                <div class="form-input-material">
+                    <!-- <label for="username">Username</label> -->
+                    <select name="category" class="form-input-material" placeholder="Category">
+                        <option value="category">Category</option>
+                        <option value="rent">Rent</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="entertainment">Entertainment</option>
+                    </select>
+                </div>
+
+                <div class="form-input-material">
+                    <!-- <label for="password">Password</label> -->
+                    <input type="password" name="password" class="form-input-material" placeholder="Password">
+                </div>
+
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </body>
+</html>
