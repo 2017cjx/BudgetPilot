@@ -3,7 +3,7 @@ import { Types, Document, Schema, model } from 'mongoose';
 export interface ICategory extends Document {
   categoryName: string;
   userId: Types.ObjectId;
-  
+
 }
 
 const categorySchema = new Schema<ICategory>({

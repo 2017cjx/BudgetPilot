@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import userRoute from './routes/user';
 import errorHandler from './middlewares/error';
+import categoryRoute from './routes/category';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get('/', (req: express.Request, res: express.Response) => {
 });
 
 app.use('/api/v1/users', userRoute);
+app.use('/api/v1/categories', categoryRoute);
 
 // Catch-all route for undefined routes
 app.use((req: express.Request, res: express.Response) => {
