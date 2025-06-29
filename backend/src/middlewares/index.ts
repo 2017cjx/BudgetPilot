@@ -3,6 +3,7 @@ import { IUser } from "../models/user";
 import { ErrorResponse } from "../utils/errorResponse";
 import asyncHandler from "./async";
 import { verifyToken } from "../utils/jwt";
+import { UserUsecase } from '../usecases/users'
 
 declare module 'express' {
   interface Request {
@@ -49,7 +50,14 @@ export const authMiddleware = asyncHandler(async (req, res, next) => {
       throw new ErrorResponse(AUTH_CONSTANTS.ERROR_MESSAGES.USER_NOT_FOUND, 404);
     }
 
-    req.user = decoded as IUser;
+    const user = await UserUsecase.userByEmail(decoded.email);
+
+    if (!user) {
+      throw new ErrorResponse(AUTH_CONSTANTS.ERROR_MESSAGES.USER_NOT_FOUND, 404);
+    }
+
+    req.user = user;
+    console.log(req.user);
     next();
   } catch (error) {
     next(error instanceof ErrorResponse ? error : new ErrorResponse(AUTH_CONSTANTS.ERROR_MESSAGES.AUTH_FAILED, 500));

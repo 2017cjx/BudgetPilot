@@ -23,7 +23,7 @@ export const register = asyncHandler(async (req, res, next) => {
 
   const hashedPassword = await hashPassword(password);
 
-  const newToken = await generateToken(username, email);
+  const newToken = await generateToken(email, username);
 
   const user: any = {
     username,
@@ -58,7 +58,10 @@ export const login = asyncHandler(async (req, res, next) => {
     throw next(new ErrorResponse('Invalid credentials', 401));
   }
 
-  const token = await generateToken(user.username, user.email);
+  const token = await generateToken(user.email, user.username);
+
+  user.token = token
+  await user.save()
 
   return appResponse(res, 200, 'Login successful', { user, token });
 });
