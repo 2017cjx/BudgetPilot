@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Expenses</title>
+    <link rel="stylesheet" href="../static/style.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="signup-form">
+        <div class="parent-box flex-box">
+            <div class="child-box align-left">
+                <a href="categories.html">
+                    <button type="button" class="button button-category">Edit Categories</button>
+                </a>
+                <a href="add.html">
+                    <button type="button" class="button button-add">Add Expenses</button>
+                </a>
+            </div>
+        </div>
+        <div class="index">
+            <h1>This Month</h1>
+        </div>
+        <canvas id="pieChart" width="400" height="200"></canvas>
+        <br>
+        <a href="">View Details</a>
+    </div>
+</body>
+<script>
+    const ctxPie = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: ['Food', 'Rent', 'Others'],
+            datasets: [{
+                data: [30, 50, 20],
+                backgroundColor: [
+                    'rgba(255,99,132,0.2)',
+                    'rgba(54,162,235,0.2)',
+                    'rgba(255,206,86,0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+</html>
