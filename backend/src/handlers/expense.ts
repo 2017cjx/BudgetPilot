@@ -31,3 +31,7 @@ export const createExpense = asyncHandler(async (req, res, next) => {
 
   return appResponse(res, 201, "Expense created successfully", expense);
 });
+
+export const getAllExpenses = asyncHandler(async (req, res, next) => {
+  
+})
