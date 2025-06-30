@@ -33,5 +33,13 @@ export const createExpense = asyncHandler(async (req, res, next) => {
 });
 
 export const getAllExpenses = asyncHandler(async (req, res, next) => {
-  
-})
+  const userId = req.user?.id;
+
+  if (!userId) {
+    return next(new ErrorResponse("User ID is required", 400));
+  }
+
+  const expenses = await ExpenseUseCase.getAllExpenses(userId);
+
+  return appResponse(res, 200, "Expenses retrieved successfully", expenses);
+});

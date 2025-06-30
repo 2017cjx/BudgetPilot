@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { createExpense } from '../handlers/expense';
+import { createExpense, getAllExpenses } from '../handlers/expense';
 
 const route = Router();
 
 route.post('/create', createExpense);
+route.get('/', getAllExpenses);
 
 export default route;

@@ -17,10 +17,6 @@ export const expenseSchema = Joi.object({
   date: Joi.date().required().messages({
     'date.base': 'Date must be a valid date',
     'any.required': 'Date is required'
-  }),
-  userId: Joi.string().required().messages({
-    'string.base': 'User ID must be a string',
-    'any.required': 'User ID is required'
   })
 });
 
@@ -39,9 +35,6 @@ export const updateExpenseSchema = Joi.object({
     }),
   date: Joi.date().optional().messages({
     'date.base': 'Date must be a valid date'
-  }),
-  userId: Joi.string().optional().messages({
-    'string.base': 'User ID must be a string'
   })
 });
 
