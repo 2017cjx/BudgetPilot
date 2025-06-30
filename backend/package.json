@@ -8,8 +8,8 @@
   "main": "src/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.ts"
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec tsx src/server.ts"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -25,6 +25,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.19",
     "@types/joi": "^17.2.2",
-    "@types/jsonwebtoken": "^9.0.10"
+    "@types/jsonwebtoken": "^9.0.10",
+    "tsx": "^4.20.3"
   }
 }

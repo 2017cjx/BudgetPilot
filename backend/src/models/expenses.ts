@@ -1,6 +1,6 @@
 import { Types, Document, Schema, model } from 'mongoose';
-import { ICategories } from './categories';
-import { IUser } from './user';
+import Category from './categories';
+import User from './user';
 
 export interface IExpense extends Document {
   amount: number;
@@ -26,12 +26,12 @@ const expenseSchema = new Schema<IExpense>({
     default: Date.now,
   },
   categoryId: {
-    type: Types.ObjectId,
+    type: Schema.Types.ObjectId, 
     ref: 'Category',
     required: true,
   },
   userId: {
-    type: Types.ObjectId,
+    type: Schema.Types.ObjectId, 
     ref: 'User',
     required: true,
   },
@@ -40,7 +40,11 @@ const expenseSchema = new Schema<IExpense>({
   toJSON: {
     transform: (doc, ret) => {
       delete ret._id;
-      delete ret.__v; // Exclude version key
+      delete ret.__v; 
     }
   }
 });
+
+const Expense = model<IExpense>('Expense', expenseSchema);
+
+export default Expense;
